@@ -45,7 +45,7 @@ void process_command(char *cmd) {
         char *start = strchr(cmd, '(');
         char *end = strchr(start, ')');
         if(start && end && end > start) {
-            char freq_str[10];
+            char freq_str[20];
             strncpy(freq_str, start + 1, end - start - 1);
             freq_str[end - start - 1] = '\0';
             uint32_t freq = atoi(freq_str);
@@ -70,7 +70,7 @@ int main(void) {
     HAL_UART_Transmit(&huart1, "Serial VFO!\r\n", 13, 100);
     si5351_Init(978);
     HAL_UART_Transmit(&huart1, "Init done!\r\n", 12, 100);
-    char rx_buffer[30];
+    char rx_buffer[40];
 
     while(1) {
         uint8_t ch;
